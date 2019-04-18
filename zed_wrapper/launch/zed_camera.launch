@@ -59,6 +59,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <arg name="rgb_info_topic"                default="rgb/camera_info" />
     <arg name="depth_topic"                   default="depth/depth_registered" />
     <arg name="depth_cam_info_topic"          default="depth/camera_info" />
+    <!-- additional params -->
+    <arg name="depth_quality"                 default="2"/> <!-- 1: Medium, 2:Performance, 3:Quality, 4:Ultra -->
 
     <node name="zed_wrapper_node" pkg="zed_wrapper" type="zed_wrapper_node" output="screen" required="true"><!-- launch-prefix="valgrind" -->
 
@@ -91,8 +93,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <param name="resolution"            value="$(arg resolution)" />
         <param name="verbose"               value="$(arg verbose)" />
         <param name="mat_resize_factor"     value="1.0" />
-        <param name="quality"               value="1" />
-        <param name="sensing_mode"          value="0" />
+        <param name="quality"               value="$(arg depth_quality)" />
+        <param name="sensing_mode"          value="0" /> <!-- 0: STANDARD, 1: FILL-->
         <param name="frame_rate"            value="$(arg frame_rate)" />
         <param name="odometry_db"           value="" />
         <param name="openni_depth_mode"     value="0" />

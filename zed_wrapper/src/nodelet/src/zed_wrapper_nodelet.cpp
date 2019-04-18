@@ -1159,6 +1159,12 @@ namespace zed_wrapper {
                        .calibration_parameters;
         }
 
+        auto zed_rected = zed.getCameraInformation(sl::Resolution(mMatWidth, mMatHeight))
+                .calibration_parameters;
+
+        auto zed_raw = zed.getCameraInformation(sl::Resolution(mMatWidth, mMatHeight))
+                .calibration_parameters_raw;
+
         float baseline = zedParam.T[0];
         leftCamInfoMsg->distortion_model =
             sensor_msgs::distortion_models::PLUMB_BOB;
